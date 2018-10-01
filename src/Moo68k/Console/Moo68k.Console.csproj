@@ -1,60 +1,54 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C19B1D62-940C-4D38-B5D9-1767244DE468}</ProjectGuid>
+    <TargetFrameworks>
+      <!-- .NET Core -->
+      <!-- netcoreapp1.0;netcoreapp1.1; -->
+      netcoreapp2.0;netcoreapp2.1;
+      <!-- .NET Framework -->
+      net45;net451;net452;
+      net46;net461;net462;
+      net47;net471;net472;
+    </TargetFrameworks>
+    <SignAssembly>False</SignAssembly>
+    <AutoGenerateBindingRedirects>True</AutoGenerateBindingRedirects>
     <OutputType>Exe</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Moo68kConsole</RootNamespace>
-    <AssemblyName>Moo68kConsole</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <RootNamespace>Moo68k.Console</RootNamespace>
+    <AssemblyName>Moo68k.Console</AssemblyName>
+    <DocumentationFile>..\..\..\artifacts\bin\$(Configuration)\$(TargetFramework)\Moo68k.Console.xml</DocumentationFile>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+
+  <!-- Nuget specific tags -->
+  <PropertyGroup>
+    <Version>0.8.0</Version>
+    <PackageId>Moo68k.Console</PackageId>
+    <Company>Neil McNeight</Company>
+    <Authors>Neil McNeight</Authors>
+    <Description>An object oriented Motorola 68000 microprocessor emulator.</Description>
+    <PackageLicenseUrl></PackageLicenseUrl>
+    <PackageProjectUrl></PackageProjectUrl>
+    <RepositoryUrl>https://github.com/McNeight/Moo68k</RepositoryUrl>
+    <Copyright>Copyright © 2016-2018 guitarxhero &amp; Neil McNeight</Copyright>
+    <PackageTags></PackageTags>
+    <NeutralLanguage>en-US</NeutralLanguage>
+    <PackageReleaseNotes></PackageReleaseNotes>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="System" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="InterpreterPrompt.cs" />
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RandomTester.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Moo68k\Moo68k.csproj">
+    <ProjectReference Include="..\MC68000\Moo68k.MC68000.csproj">
       <Project>{14c11e14-fba6-43a0-ab47-37cc2006d018}</Project>
-      <Name>Moo68k</Name>
+      <Name>Moo68k.MC68000</Name>
     </ProjectReference>
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+
 </Project>

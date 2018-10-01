@@ -1,0 +1,7 @@
+<Project>
+  <PropertyGroup>
+    <Deterministic>true</Deterministic>
+    <BaseIntermediateOutputPath>..\..\..\artifacts\obj\MC68000\</BaseIntermediateOutputPath>
+    <BaseOutputPath>..\..\..\artifacts\bin\</BaseOutputPath>
+  </PropertyGroup>
+</Project>

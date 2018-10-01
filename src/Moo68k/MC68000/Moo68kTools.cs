@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 
 namespace Moo68k.Tools
@@ -17,11 +14,11 @@ namespace Moo68k.Tools
          * - Abuse << to push in bits while compiling
          */
 
-        const int DATA_BUS_WIDTH = 16;
+        private const int DATA_BUS_WIDTH = 16;
 
         public enum FileFormat : byte { S19 = 16, S28 = 24, S37 = 32 }
 
-        static class SRecord
+        private static class SRecord
         {
             public static string Compile(string source, string path)
             {
@@ -48,7 +45,7 @@ namespace Moo68k.Tools
 
                 throw new NotImplementedException();
 
-                using (StreamWriter sw = new StreamWriter(path, false, encoding))
+                using (var sw = new StreamWriter(path, false, encoding))
                 {
 
                 }
@@ -83,11 +80,15 @@ namespace Moo68k.Tools
             return HexToULong(s.Length > 16 ? s.Substring(s.Length - 16) : s);
         }
 
-        static Regex HexRegex = new Regex(@"[^\dA-Fa-f]",
+        private static Regex HexRegex = new Regex(@"[^\dA-Fa-f]",
                 RegexOptions.ECMAScript | RegexOptions.Compiled);
-        static string PrepareHexString(string s) => HexRegex.Replace(s, "");
 
-        static ulong HexToULong(string s)
+        private static string PrepareHexString(string s)
+        {
+            return HexRegex.Replace(s, "");
+        }
+
+        private static ulong HexToULong(string s)
         {
             ulong o = 0;
 

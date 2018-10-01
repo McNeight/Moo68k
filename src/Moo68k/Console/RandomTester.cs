@@ -1,27 +1,22 @@
-﻿using Moo68k;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using static System.Console;
 
-namespace Moo68kConsole
+namespace Moo68k.Console
 {
     public static class RandomTester
     {
         public static void Run()
         {
-            MC68000 m68k = new MC68000();
-            Random r = new Random();
+            var m68k = new MC68000();
+            var r = new Random();
             while (true)
             {
                 System.Threading.Thread.Sleep(150);
 
                 // Operation code
-                ushort op = (ushort)r.Next(ushort.MaxValue);
+                var op = (ushort)r.Next(ushort.MaxValue);
                 // Operand
-                uint opr = (uint)r.Next(int.MaxValue);
+                var opr = (uint)r.Next(int.MaxValue);
 
                 m68k.Execute(op, opr);
 

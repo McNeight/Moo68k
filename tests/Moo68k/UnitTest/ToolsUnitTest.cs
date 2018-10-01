@@ -1,11 +1,10 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moo68k.Tools;
 
-namespace Moo68kUnitTest
+namespace Moo86k.UnitTest
 {
     [TestClass]
-    public class Moo86kToolsUnitTest
+    public class ToolsUnitTest
     {
         [TestMethod]
         [TestCategory("Tools")]

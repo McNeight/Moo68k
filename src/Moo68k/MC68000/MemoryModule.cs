@@ -1,6 +1,4 @@
-﻿using System;
-
-//TODO: Manual memory mapping instead of using BitConverter
+﻿//TODO: Manual memory mapping instead of using BitConverter
 
 namespace Moo68k
 {
@@ -31,7 +29,7 @@ namespace Moo68k
         {
             return Bank[address];
         }
-        
+
         public void WriteByte(int address, byte value)
         {
             Bank[address] = value;
@@ -42,31 +40,41 @@ namespace Moo68k
         public unsafe short ReadWord(int address)
         {
             fixed (byte* p = Bank)
+            {
                 return *((short*)p + (address / sizeof(short)));
+            }
         }
 
         public unsafe short ReadWord(uint address)
         {
             fixed (byte* p = Bank)
+            {
                 return *((short*)p + (address / sizeof(short)));
+            }
         }
 
         public unsafe ushort ReadUWord(int address)
         {
             fixed (byte* p = Bank)
+            {
                 return *((ushort*)p + (address / sizeof(ushort)));
+            }
         }
 
         public unsafe void WriteWord(int address, short value)
         {
             fixed (byte* p = Bank)
+            {
                 *((short*)p + (address / sizeof(short))) = value;
+            }
         }
 
         public unsafe void WriteUWord(int address, ushort value)
         {
             fixed (byte* p = Bank)
+            {
                 *((ushort*)p + (address / sizeof(ushort))) = value;
+            }
         }
 
         // Long / Unsigned Long
@@ -74,45 +82,49 @@ namespace Moo68k
         public unsafe int ReadLong(int address)
         {
             fixed (byte* p = Bank)
+            {
                 return *((int*)p + (address / sizeof(int)));
+            }
         }
 
         public unsafe int ReadLong(uint address)
         {
             fixed (byte* p = Bank)
+            {
                 return *((int*)p + (address / sizeof(int)));
+            }
         }
 
         public unsafe uint ReadULong(int address)
         {
             fixed (byte* p = Bank)
+            {
                 return *((uint*)p + (address / sizeof(uint)));
+            }
         }
 
         public unsafe void WriteLong(int address, int value)
         {
             fixed (byte* p = Bank)
+            {
                 *((int*)p + (address / sizeof(int))) = value;
+            }
         }
 
         public unsafe void WriteULong(int address, uint value)
         {
             fixed (byte* p = Bank)
+            {
                 *((uint*)p + (address / sizeof(uint))) = value;
+            }
         }
 
         // Indexers
 
         public byte this[int address]
         {
-            get
-            {
-                return Bank[address];
-            }
-            set
-            {
-                Bank[address] = value;
-            }
+            get => Bank[address];
+            set => Bank[address] = value;
         }
     }
 }

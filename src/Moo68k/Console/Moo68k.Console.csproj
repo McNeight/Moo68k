@@ -17,7 +17,6 @@
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <RootNamespace>Moo68k.Console</RootNamespace>
     <AssemblyName>Moo68k.Console</AssemblyName>
-    <DocumentationFile>..\..\..\artifacts\bin\$(Configuration)\$(TargetFramework)\Moo68k.Console.xml</DocumentationFile>
   </PropertyGroup>
 
   <!-- Nuget specific tags -->

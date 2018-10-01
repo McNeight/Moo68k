@@ -1,17 +1,16 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moo68k;
 
-namespace Moo86kUnitTest
+namespace Moo86k.UnitTest
 {
     [TestClass]
-    public class Moo86kUnitTest
+    public class ProcessorUnitTest
     {
         [TestMethod]
         [TestCategory("Processor")]
         public void TestInput()
         {
-            MC68000 m68k = new MC68000();
+            var m68k = new MC68000();
 
             Assert.AreEqual(0x2700u, m68k.SR);
         }
@@ -20,7 +19,7 @@ namespace Moo86kUnitTest
         [TestCategory("Processor")]
         public void TestRegisters()
         {
-            MC68000 m68k = new MC68000();
+            var m68k = new MC68000();
 
             // Data
             m68k.Execute(0x203C, 1);
@@ -84,7 +83,7 @@ namespace Moo86kUnitTest
         [TestCategory("Processor")]
         public void TestAddition()
         {
-            MC68000 m68k = new MC68000();
+            var m68k = new MC68000();
 
             // Move immidiate value long 4 into register D0
             m68k.Execute(0x203C, 4);
@@ -119,7 +118,7 @@ namespace Moo86kUnitTest
         [TestCategory("Processor")]
         public void TestSubtraction()
         {
-            MC68000 m68k = new MC68000();
+            var m68k = new MC68000();
 
             // Move immidiate value long 73 into register D0
             m68k.Execute(0x203C, 73);
@@ -153,8 +152,8 @@ namespace Moo86kUnitTest
         public void TestBitwiseOperations()
         {
             // AND, OR, etc.
-            MC68000 m68k = new MC68000();
-            
+            var m68k = new MC68000();
+
             m68k.Execute(0x203C, 0x50); // D0: $50
 
             // ORI.L #$10,D0
@@ -167,7 +166,7 @@ namespace Moo86kUnitTest
         [TestCategory("Processor")]
         public void TestBitShifting()
         {
-            MC68000 m68k = new MC68000();
+            var m68k = new MC68000();
 
             // Move immidiate value long 4 into register D0
             m68k.Execute(0x203C, 4);

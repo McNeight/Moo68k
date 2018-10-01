@@ -1,17 +1,16 @@
-﻿using Moo68k;
-using System;
-using static System.Console;
+﻿using System;
 using Moo68k.Tools;
+using static System.Console;
 
-namespace Moo68kConsole
+namespace Moo68k.Console
 {
     public static class InterpreterPrompt
     {
         public static void Enter()
         {
-            MC68000 m68k = new MC68000();
+            var m68k = new MC68000();
             string n;
-            bool c = true; // Continue
+            var c = true; // Continue
 
             while (c)
             {
@@ -23,98 +22,99 @@ namespace Moo68kConsole
                 } while (n == null || n.Length == 0);
 
                 if (!n.StartsWith("#")) // Remark/Comment
+                {
                     switch (n[0])
                     {
                         case 'p': // Print
+                        {
+                            var s = n.Split(
+                                new[] { ' ' },
+                                StringSplitOptions.RemoveEmptyEntries
+                            );
+
+                            switch (s.Length)
                             {
-                                string[] s = n.Split(
-                                    new[] { ' ' },
-                                    StringSplitOptions.RemoveEmptyEntries
-                                );
+                                case 1:
+                                    WriteLine("No idea what to print.");
+                                    break;
 
-                                switch (s.Length)
-                                {
-                                    case 1:
-                                        WriteLine("No idea what to print.");
-                                        break;
+                                case 2:
+                                    switch (s[1]) // Lazy..
+                                    {
+                                        case "d0":
+                                            WriteLine($"{m68k.D0:X8}");
+                                            break;
+                                        case "d1":
+                                            WriteLine($"{m68k.D1:X8}");
+                                            break;
+                                        case "d2":
+                                            WriteLine($"{m68k.D2:X8}");
+                                            break;
+                                        case "d3":
+                                            WriteLine($"{m68k.D3:X8}");
+                                            break;
+                                        case "d4":
+                                            WriteLine($"{m68k.D4:X8}");
+                                            break;
+                                        case "d5":
+                                            WriteLine($"{m68k.D5:X8}");
+                                            break;
+                                        case "d6":
+                                            WriteLine($"{m68k.D6:X8}");
+                                            break;
+                                        case "d7":
+                                            WriteLine($"{m68k.D7:X8}");
+                                            break;
+                                        case "a0":
+                                            WriteLine($"{m68k.A0:X8}");
+                                            break;
+                                        case "a1":
+                                            WriteLine($"{m68k.A1:X8}");
+                                            break;
+                                        case "a2":
+                                            WriteLine($"{m68k.A2:X8}");
+                                            break;
+                                        case "a3":
+                                            WriteLine($"{m68k.A3:X8}");
+                                            break;
+                                        case "a4":
+                                            WriteLine($"{m68k.A4:X8}");
+                                            break;
+                                        case "a5":
+                                            WriteLine($"{m68k.A5:X8}");
+                                            break;
+                                        case "a6":
+                                            WriteLine($"{m68k.A6:X8}");
+                                            break;
+                                        /*case "a7": // Already a TODO
+                                        WriteLine($"{m68k.A7:X8}");
+                                            break;*/
+                                        case "sr":
+                                            WriteLine($"{m68k.SR:X4}");
+                                            break;
+                                        case "ssp":
+                                            WriteLine($"{m68k.SSP:X6}");
+                                            break;
+                                        case "usp":
+                                            WriteLine($"{m68k.USP:X6}");
+                                            break;
+                                        case "pc":
+                                            WriteLine($"{m68k.PC:X6}");
+                                            break;
+                                        /* MSP, IRP already a TODO */
 
-                                    case 2:
-                                        switch (s[1]) // Lazy..
-                                        {
-                                            case "d0":
-                                                WriteLine($"{m68k.D0:X8}");
-                                                break;
-                                            case "d1":
-                                                WriteLine($"{m68k.D1:X8}");
-                                                break;
-                                            case "d2":
-                                                WriteLine($"{m68k.D2:X8}");
-                                                break;
-                                            case "d3":
-                                                WriteLine($"{m68k.D3:X8}");
-                                                break;
-                                            case "d4":
-                                                WriteLine($"{m68k.D4:X8}");
-                                                break;
-                                            case "d5":
-                                                WriteLine($"{m68k.D5:X8}");
-                                                break;
-                                            case "d6":
-                                                WriteLine($"{m68k.D6:X8}");
-                                                break;
-                                            case "d7":
-                                                WriteLine($"{m68k.D7:X8}");
-                                                break;
-                                            case "a0":
-                                                WriteLine($"{m68k.A0:X8}");
-                                                break;
-                                            case "a1":
-                                                WriteLine($"{m68k.A1:X8}");
-                                                break;
-                                            case "a2":
-                                                WriteLine($"{m68k.A2:X8}");
-                                                break;
-                                            case "a3":
-                                                WriteLine($"{m68k.A3:X8}");
-                                                break;
-                                            case "a4":
-                                                WriteLine($"{m68k.A4:X8}");
-                                                break;
-                                            case "a5":
-                                                WriteLine($"{m68k.A5:X8}");
-                                                break;
-                                            case "a6":
-                                                WriteLine($"{m68k.A6:X8}");
-                                                break;
-                                            /*case "a7": // Already a TODO
-                                            WriteLine($"{m68k.A7:X8}");
-                                                break;*/
-                                            case "sr":
-                                                WriteLine($"{m68k.SR:X4}");
-                                                break;
-                                            case "ssp":
-                                                WriteLine($"{m68k.SSP:X6}");
-                                                break;
-                                            case "usp":
-                                                WriteLine($"{m68k.USP:X6}");
-                                                break;
-                                            case "pc":
-                                                WriteLine($"{m68k.PC:X6}");
-                                                break;
-                                            /* MSP, IRP already a TODO */
+                                        default:
+                                            WriteLine("Unknown p argument.");
+                                            break;
+                                    }
+                                    break;
 
-                                            default:
-                                                WriteLine("Unknown p argument.");
-                                                break;
-                                        }
-                                        break;
-
-                                    default:
-                                        WriteLine("Unsupported number of p arguments.");
-                                        break;
-                                }
+                                default:
+                                    WriteLine("Unsupported number of p arguments.");
+                                    break;
                             }
-                            break;
+                        }
+                        break;
 
                         case 't': // Trace
                             WriteLine($" D0={m68k.D0:X8}  D1={m68k.D1:X8}  D2={m68k.D2:X8}  D3={m68k.D3:X8}");
@@ -145,51 +145,51 @@ namespace Moo68kConsole
                             break;
 
                         default:
+                        {
+                            var s = n.Split(
+                                new[] { ' ' },
+                                StringSplitOptions.RemoveEmptyEntries
+                            );
+
+                            switch (s.Length)
                             {
-                                string[] s = n.Split(
-                                    new[] { ' ' },
-                                    StringSplitOptions.RemoveEmptyEntries
-                                );
+                                // Case 0 is handled earlier.
 
-                                switch (s.Length)
+                                case 1:
+                                    try
+                                    {
+                                        m68k.Execute(s[0].HexStringToUInt());
+                                    }
+                                    catch
+                                    {
+                                        WriteLine("Couldn't parse operation code.");
+                                    }
+                                    break;
+
+                                case 2:
                                 {
-                                    // Case 0 is handled earlier.
-
-                                    case 1:
-                                        try
-                                        {
-                                            m68k.Execute(s[0].HexStringToUInt());
-                                        }
-                                        catch
-                                        {
-                                            WriteLine("Couldn't parse operation code.");
-                                        }
-                                        break;
-
-                                    case 2:
-                                        {
-                                            try
-                                            {
-                                                m68k.Execute(
-                                                    s[0].HexStringToUInt(),
-                                                    s[1].HexStringToUInt()
-                                                );
-                                            }
-                                            catch
-                                            {
-                                                WriteLine("Couldn't parse operation code or operand.");
-                                            }
-                                        }
-                                        break;
-
-                                    default:
-                                        WriteLine("Too many operands");
-                                        break;
+                                    try
+                                    {
+                                        m68k.Execute(
+                                            s[0].HexStringToUInt(),
+                                            s[1].HexStringToUInt()
+                                        );
+                                    }
+                                    catch
+                                    {
+                                        WriteLine("Couldn't parse operation code or operand.");
+                                    }
                                 }
-                            }
-                            break;
-                    }
+                                break;
 
+                                default:
+                                    WriteLine("Too many operands");
+                                    break;
+                            }
+                        }
+                        break;
+                    }
+                }
             }
         }
     }

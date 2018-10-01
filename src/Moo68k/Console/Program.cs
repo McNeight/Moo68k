@@ -1,16 +1,13 @@
-﻿using Moo68k;
-using Moo68k.Tools;
-using System;
-using static System.Console;
+﻿using static System.Console;
 
-namespace Moo68kConsole
+namespace Moo68k.Console
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
-            Write("Creating MC86000... ");
-            MC68000 m68k = new MC68000();
+            Write("Creating MC68000... ");
+            var m68k = new MC68000();
             WriteLine("OK");
 
             m68k.FlagIsSupervisor = true;

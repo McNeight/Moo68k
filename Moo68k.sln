@@ -1,16 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2036
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Moo68k", "Moo68k\Moo68k.csproj", "{14C11E14-FBA6-43A0-AB47-37CC2006D018}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MC68000", "src\Moo68k\MC68000\Moo68k.MC68000.csproj", "{14C11E14-FBA6-43A0-AB47-37CC2006D018}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Moo68kUnitTest", "Moo68kUnitTest\Moo68kUnitTest.csproj", "{C08FD411-B6BD-4299-BACF-4DBE30A59B38}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest", "tests\Moo68k\UnitTest\Moo68k.UnitTest.csproj", "{C08FD411-B6BD-4299-BACF-4DBE30A59B38}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Moo68kConsole", "Moo68kConsole\Moo68kConsole.csproj", "{C19B1D62-940C-4D38-B5D9-1767244DE468}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Console", "src\Moo68k\Console\Moo68k.Console.csproj", "{C19B1D62-940C-4D38-B5D9-1767244DE468}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5EB2749C-261D-4EF1-9882-1D46E68422E1}"
 	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
 		License = License
 		Readme.md = Readme.md
 	EndProjectSection
@@ -36,5 +39,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5639A899-ADA9-4560-95F5-8B51D42D202A}
 	EndGlobalSection
 EndGlobal
